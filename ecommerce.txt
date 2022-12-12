@@ -1,0 +1,40 @@
+use ecommerce
+
+db.mensajes.insertMany([{email:'franciscoleal@hotmail.com',text:'hola'},{email:'franciscl@hotmail.com',text:'hola como tas'},{email:'juan@hotmail.com',text:'buenos dias'},{email:'manuela@hotmail.com',text:'holiiiii'},{email:'pedrito@hotmail.com',text:'tanto tiempo'},{email:'tinchito@hotmail.com',text:'pibeees'},{email:'francosaas@hotmail.com',text:'buenas buenas'},{email:'fede@hotmail.com',text:'oa'},{email:'juli@hotmail.com',text:'holasss'},{email:'mica@hotmail.com',text:'que ondaa'}])
+
+db.productos.insertMany([{title:'papa',price:150,thumbnail:'dfvdfbbwbrw'},{title:'tomate',price:200,thumbnail:'dfvdfbbrw'},{title:'lechuga',price:220,thumbnail:'dfvdfbbwbrwdsafdfsdf'},{title:'cebolla de verdeo',price:100,thumbnail:'dfvdfbbw'},{title:'pimiento',price:450,thumbnail:'dfvdfbbwbrwsdfsfhhr'},{title:'cebolla',price:350,thumbnail:'dfvdfbasdjjjjjkgbrw'},{title:'zanahoria',price:150,thumbnail:'dfvdfbbwbrwahytjyukuykuu'},{title:'brocoli',price:400,thumbnail:'dfvdfbbwbrwjfijbfgoibftgb'},{title:'pan',price:250,thumbnail:'dfvdfbbwbrwsdfrgtrh'},{title:'queso',price:350,thumbnail:'dfvdfbbwbredgferhrthw'}])
+
+db.productos.find()
+db.mensajes.find()
+
+
+db.productos.estimatedDocumentCount()
+db.mensajes.estimatedDocumentCount()
+
+
+db.productos.insertOne({title:'torta de casamiento',price:1500,thumbnail:'asdjhfsdvhabobhvo'})
+
+
+db.productos.find({"price":{$lt:1000}})
+
+
+db.productos.find({$and:[{"price":{$gt:1000}},{"price":{$lt:3000}}]})
+
+
+db.productos.find({"price":{$gt:300}})
+
+
+db.productos.find().sort({price:1}).limit(1)
+
+db.productos.find().sort({price:1}).skip(2).limit(1)
+
+
+db.productos.updateMany({}, {$set: {stock: 100}}, {upsert: true})
+
+db.productos.update({price:400},{$set:{'stock':0}})
+
+
+db.productos.deleteMany({"price":{$lt:200}})
+
+use admin
+db.createUser({"user":"pepe","pwd":"asd456","roles":[{role:"read",db:"ecommerce"}]})
